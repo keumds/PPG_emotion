@@ -87,7 +87,9 @@ public class MainActivity extends Activity implements BiosignalConsumer {
      */
     private void initialize() {
         // 인터페이스 초기화
-        mPPGGraph = new LineChartGraph(this, (RelativeLayout) findViewById(R.id.ppg_view), 400, 2);
+        mPPGGraph = new LineChartGraph(this, (RelativeLayout) findViewById(R.id.ppg_view));
+        mPPGGraph.setWindowSize(400);
+        mPPGGraph.setIntervalSize(2);
         mBpmTv = (TextView) findViewById(R.id.bpm_tv);
         mConnectBtn = (Button) findViewById(R.id.connect_btn);
         mStartBtn = (Button) findViewById(R.id.start_btn);
@@ -119,7 +121,7 @@ public class MainActivity extends Activity implements BiosignalConsumer {
      * PPG 신호 콜백 함수
      */
     private void onCallbackReceivedPPG(int ppg) {
-        mPPGGraph.add(ppg);
+        mPPGGraph.addValue((float) ppg);
     }
 
     /*
@@ -250,7 +252,11 @@ public class MainActivity extends Activity implements BiosignalConsumer {
 
     // ############# Permission 관련 #############
     static final int PERMISSIONS_REQUEST_CODE = 1000;
-    String[] PERMISSIONS = {"android.permission.ACCESS_COARSE_LOCATION"};
+    String[] PERMISSIONS = {
+            "android.permission.ACCESS_COARSE_LOCATION",  // 구버전 호환
+            "android.permission.BLUETOOTH_SCAN",
+            "android.permission.BLUETOOTH_CONNECT"
+    };
 
     /**
      * Permission 허용 여부 확인 함수

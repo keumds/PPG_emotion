@@ -1,2 +1,23 @@
-include ':app'
-rootProject.name='android-biosignal-service'
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        //maven { url "https://repo.spring.io/plugins-release" } // ⬅ 추가
+        // 필요 시: maven { url "https://jitpack.io" }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // ✅ MPAndroidChart용 JitPack 추가
+        maven { url "https://jitpack.io" }
+        //maven { url "https://repo.spring.io/plugins-release" } // ⬅ 추가
+        maven { url "https://jitpack.io" } // MPAndroidChart 필요
+    }
+}
+
+rootProject.name = "android-biosignal-service"
+include(":app")

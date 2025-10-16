@@ -65,8 +65,12 @@
     <string name="popup_message">Do you want to quit this Application?</string>
     <string name="popup_yes">YES</string>
     <string name="popup_no">NO</string>
-    <string name="ble_not_supported">Bluetooth Low Energy not supported</string>
     <string name="scan">Scan</string>
     <string name="cancel">Cancel</string>
+    <string name="please_enable_location">Please enable location services to scan for BLE devices.</string>
+    <string name="no_devices_found">No BLE devices found nearby.</string>
+    <string name="perm_denied">Required permissions were denied.</string>
+    <string name="bt_not_enabled">Bluetooth is not enabled.</string>
+    <string name="ble_not_supported">BLE not supported on this device.</string>
 
 </resources>

@@ -142,7 +142,7 @@ public class Feel_Start1 extends Activity implements BiosignalConsumer {
 
         for(int i=0;i<input.length;i++){
             power_spectrum[i]=((cinput[i].re*cinput[i].re)+(cinput[i].im*cinput[i].im))/(input.length*input.length)*2;
-           // System.out.printf("%.9f\n",power_spectrum[i]);
+            // System.out.printf("%.9f\n",power_spectrum[i]);
         }
 
         return power_spectrum;
@@ -239,7 +239,9 @@ public class Feel_Start1 extends Activity implements BiosignalConsumer {
      */
     private void initialize() {
         // 인터페이스 초기화
-        mPPGGraph = new LineChartGraph(this, (RelativeLayout) findViewById(R.id.ppg_view), 300, 2);
+        mPPGGraph = new LineChartGraph(this, (RelativeLayout) findViewById(R.id.ppg_view));
+        mPPGGraph.setWindowSize(300);
+        mPPGGraph.setIntervalSize(2);
         mBpmTv = (TextView) findViewById(R.id.bpm_tv);
 
         mStopBtn = (Button) findViewById(R.id.stop_btn);
@@ -276,7 +278,7 @@ public class Feel_Start1 extends Activity implements BiosignalConsumer {
      * PPG 신호 콜백 함수
      */
     private void onCallbackReceivedPPG(int ppg) {
-        mPPGGraph.add(ppg);
+        mPPGGraph.addValue((float) ppg);
     }
 
     /**
